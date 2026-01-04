@@ -19,19 +19,19 @@ class hero {
   // Misc
   late String species;
   // Constructor
-  hero(this.str, this.con, this.dex, this.wis, this.res, this.hp, this.cs, this.rs, this.dodge, this.pickLocks, this.barter, this.heal, this.alchemy, this.perception, this.foraging);
+  hero({required this.str, required this.con, required this.dex, required this.wis, required this.res, required this.hp, required this.cs, required this.rs, required this.dodge, required this.pickLocks, required this.barter, required this.heal, required this.alchemy, required this.perception, required this.foraging});
 }
 
 class wizard extends hero {
   late int arcane;
   // Constructor references hero class and adds arcane
-  wizard(super.str, super.con, super.dex, super.wis, super.res, super.hp, super.cs, super.rs, super.dodge, super.pickLocks, super.barter, super.heal, super.alchemy, super.perception, super.foraging, this.arcane);
+  wizard({required super.str, required super.con, required super.dex, required super.wis, required super.res, required super.hp, required super.cs, required super.rs, required super.dodge, required super.pickLocks, required super.barter, required super.heal, required super.alchemy, required super.perception, required super.foraging, required this.arcane});
 }
 
 class warriorPriest extends hero {
   late int battlePrayers;
   // Constructor references hero class and adds battle prayers
-  warriorPriest(super.str, super.con, super.dex, super.wis, super.res, super.hp, super.cs, super.rs, super.dodge, super.pickLocks, super.barter, super.heal, super.alchemy, super.perception, super.foraging, this.battlePrayers);
+  warriorPriest({required super.str, required super.con, required super.dex, required super.wis, required super.res, required super.hp, required super.cs, required super.rs, required super.dodge, required super.pickLocks, required super.barter, required super.heal, required super.alchemy, required super.perception, required super.foraging, required this.battlePrayers});
 }
 
 class enemy {

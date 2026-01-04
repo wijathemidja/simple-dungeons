@@ -29,7 +29,7 @@ int exReroll(int maxposvalue){
         chosenRoll = roll2;
       }
       print("Your reroll was $roll2. The value used will be $chosenRoll");
-      sleep(Duration(seconds: rule.rules["Delay Before Clear"]));
+      sleep(Duration(milliseconds: rule.rules["Delay Before Clear"]));
       clearScreen();
       break;
     } else {
@@ -137,11 +137,11 @@ setup(){
     backScreen();
   }
   int clearDelay = rule.rules["Delay Before Clear"];
-  print("When using extended rerolls, the delay before clear is set to $clearDelay seconds.");
+  print("When using extended rerolls, the delay before clear is set to $clearDelay milliseconds.");
   print("[0] Set delay to custom amount \n[1] Keep current rule \n[2] Back");
   String? cdchosenOption = stdin.readLineSync();
   if (cdchosenOption == "0"){
-    print("What do you want the delay to be (in seconds)? \nIf you want it to be 0 enter 0.");
+    print("What do you want the delay to be (in milliseconds)? \nIf you want it to be 0 enter 0.");
     String? cdcustomstr = stdin.readLineSync();
     String cdcustomr = "$cdcustomstr";
     int cdcustom = int.parse(cdcustomr);
@@ -149,7 +149,7 @@ setup(){
   } else if (cdchosenOption == "2"){
     backScreen();
   } else {
-    print("Kept delay at $clearDelay seconds");
+    print("Kept delay at $clearDelay milliseconds");
   }
   //NEXT RULE HERE PLACEHOLDER
   //Exit

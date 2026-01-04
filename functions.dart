@@ -25,7 +25,7 @@ exReroll(int maxposvalue){
       if (roll1 >= roll2){
         chosenRoll = roll1;
       } else if (roll2 >= roll1){
-        chosenRoll= roll2;
+        chosenRoll = roll2;
       }
       print("Your reroll was $roll2. The value used will be $chosenRoll");
       break;
@@ -51,21 +51,75 @@ autoReroll(int maxposvalue){
 // Reroll
 // Looks at rules file and then decides whether to use autoreroll() or rerollex() when it is called.
 reroll(maxposvalue){
-  if (rule.rerollType == "extendedReroll"){
+  if (rule.rules["Rerolls"] == "Extended"){
     return(exReroll(maxposvalue));
-  } else if (rule.rerollType == "autoReroll"){
+  } else if (rule.rules["Rerolls"] == "Automatic"){
     return(autoReroll(maxposvalue));
+  } else if (rule.rules["Rerolls"] == "Disabled"){
+    return(roll(maxposvalue));
+  } else {
+    return(exReroll(maxposvalue));
   }
 }
 //Welcome
 //The starting text but this can be called whenever, this is useful because if the user goes back to the 'home screen' (this text) they can see the options.
 welcome(){
-  print("Welcome to Simple Dungeons.\n[0] Setup \n[1] Character Creator 2 \n[2] Exit");
 
+  Function runfunction;
+  while(true){
+    print("Welcome to Simple Dungeons.\n[0] Setup \n[1] Character Creator \n[2] Exit");
+    rule.lastScreen = "welcome";
+    String? welcomeChosenChoice = stdin.readLineSync();
+    if (welcomeChosenChoice=="0"){
+      runfunction = setup();
+      break;
+    } else if (welcomeChosenChoice == "1"){
+      runfunction = createCharacter();
+      break;
+    } else if (welcomeChosenChoice == "2"){
+      runfunction = exitapp();
+      break;
+    } else {
+      print("You didn't enter a valid input. Please try again.");
+    }
+  }
+  runfunction;
 }
+//Create Character
 //Create Character is called whenever it is selected from the welcome menu. It does what is says ig
 createCharacter(){
   print("What would you like your species to be?");
   print("[0] Dwarf \n[1] Elf \n[2] Halfling \n[3] Human \n[4] Back");
 
+}
+//Setup
+//Sets up simple dungeon rules. Not required but useful.
+setup(){
+  print("These are the current rules.");
+  String rerollRule = rule.rules["Rerolls"];
+  print("Rerolls are set to $rerollRule. If you would like to see information on this see the wiki.");
+  print("[0] Set Rerolls to Extended \n[1] Set Rerolls to Automatic \n[2] Keep current rule \n[3] Back");
+  String? rrchosenOption = stdin.readLineSync();
+  if (rrchosenOption == "0"){
+    rule.rules["Rerolls"] = "Extended";
+  } else if (rrchosenOption == "1"){
+    rule.rules["Rerolls"] = "Automatic";
+  } else if (rrchosenOption == "3"){
+    backScreen();
+  }
+  //NEXT RULE HERE PLACEHOLDER
+  //NEXT RULE HERE PLACEHOLDER
+  //Exit
+  backScreen();
+}
+
+//Back Screen
+//Looks at last screen and runs function corresponding to it.
+backScreen(){
+  rule.screens[rule.lastScreen];
+}
+
+//Exit App
+exitapp(){
+  exit(0);
 }

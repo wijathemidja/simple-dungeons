@@ -5,13 +5,13 @@ import 'rules.dart' as rule;
 // Roll
 // The function takes in a max possible value (unlike the built in function in dart:math (I did this for simplicity).
 // So for a roll between 1 and 20 roll(20) is used and for a roll between 1 and 100 roll(100) is used.
-roll(int maxposvalue){
+int roll(int maxposvalue){
   return(Random().nextInt(maxposvalue)+1);
 }
 //Reroll Extended
 // The function takes one max possible value and feeds it in to two seperate roll functions. It then asks the user if they want to reroll, and they can decline, or they can enter 1 to do (in essence) the autoreroll function, but with extra text to explain.
 // Because it takes an option and input it has an else catch-all statement and while loop.
-exReroll(int maxposvalue){
+int exReroll(int maxposvalue){
   int roll1 = roll(maxposvalue);
   int roll2 = roll(maxposvalue);
   int chosenRoll = roll1;
@@ -37,7 +37,7 @@ exReroll(int maxposvalue){
 }
 //Auto Reroll
 //Auto reroll rolls two values and then finds the highest and returns that value, v simple.
-autoReroll(int maxposvalue){
+int autoReroll(int maxposvalue){
   int roll1 = roll(maxposvalue);
   int roll2 = roll(maxposvalue);
   late int chosenRoll;
@@ -50,7 +50,7 @@ autoReroll(int maxposvalue){
 }
 // Reroll
 // Looks at rules file and then decides whether to use autoreroll() or rerollex() when it is called.
-reroll(maxposvalue){
+int reroll(maxposvalue){
   if (rule.rules["Rerolls"] == "Extended"){
     return(exReroll(maxposvalue));
   } else if (rule.rules["Rerolls"] == "Automatic"){
@@ -88,8 +88,32 @@ welcome(){
 //Create Character
 //Create Character is called whenever it is selected from the welcome menu. It does what is says ig
 createCharacter(){
-  print("What would you like your species to be?");
-  print("[0] Dwarf \n[1] Elf \n[2] Halfling \n[3] Human \n[4] Back");
+  String? ccchoice;
+  Function? runfunction;
+  while(true){
+    print("What would you like your species to be?");
+    print("[0] Dwarf \n[1] Elf \n[2] Halfling \n[3] Human \n[4] Back");
+    ccchoice = stdin.readLineSync();
+    if (ccchoice == "0"){
+      runfunction = dwarfCreation();
+      break;
+    } else if (ccchoice == "1"){
+      runfunction = elfCreation();
+      break;
+    } else if (ccchoice == "2"){
+      runfunction = halflingCreation();
+      break;
+    } else if (ccchoice == "3"){
+      runfunction = humanCreation();
+    } else if (ccchoice == "4"){
+      runfunction = backScreen();
+      break;
+    } else {
+      print("You didn't enter a valid input. Please try again.");
+    }
+  }
+  runfunction;
+
 
 }
 //Setup
@@ -122,4 +146,95 @@ backScreen(){
 //Exit App
 exitapp(){
   exit(0);
+}
+
+// CHARACTER CREATION SPECIES SPECIFIC
+
+dwarfCreation(){
+  print("Now you're going to roll your basic stats and HP for your hero.");
+  print("Your strength is 40 + a 1d10 roll");
+  int str = 40+reroll(10);
+  print("Your strength is $str");
+
+  print("Your constitution is 30 + a 1d10 roll");
+  int con = 30+reroll(10);
+  print("Your constitution is $con");
+  print("Your dexterity is 25 + a 1d10 roll");
+  int dex = 25+reroll(10);
+  print("Your dexterity is $dex");
+  print("Your wisdom is 25 + a 1d10 roll");
+  int wis = 25+reroll(10);
+  print("Your wisdom is $wis");
+  print("Your resolve is 30 + a 1d10 roll");
+  int res = 30+reroll(10);
+  print("Your resolve is $res");
+  print("Your HP is 8 + a 1d6 roll");
+  int hp = 8+reroll(6);
+  print("Your HP is $hp");
+}
+
+elfCreation(){
+  print("Now you're going to roll your basic stats and HP for your hero.");
+  print("Your strength is 25 + a 1d10 roll");
+  int str = 25+reroll(10);
+  print("Your strength is $str");
+  print("Your constitution is 20 + a 1d10 roll");
+  int con = 20+reroll(10);
+  print("Your constitution is $con");
+  print("Your dexterity is 40 + a 1d10 roll");
+  int dex = 40+reroll(10);
+  print("Your dexterity is $dex");
+  print("Your wisdom is 35 + a 1d10 roll");
+  int wis = 35+reroll(10);
+  print("Your wisdom is $wis");
+  print("Your resolve is 30 + a 1d10 roll");
+  int res = 30+reroll(10);
+  print("Your resolve is $res");
+  print("Your HP is 6 + a 1d6 roll");
+  int hp = 6+reroll(6);
+  print("Your HP is $hp");
+}
+
+halflingCreation(){
+  print("Now you're going to roll your basic stats and HP for your hero.");
+  print("Your strength is 20 + a 1d10 roll");
+  int str = 20+reroll(10);
+  print("Your strength is $str");
+  print("Your constitution is 20 + a 1d10 roll");
+  int con = 20+reroll(10);
+  print("Your constitution is $con");
+  print("Your dexterity is 40 + a 1d10 roll");
+  int dex = 40+reroll(10);
+  print("Your dexterity is $dex");
+  print("Your wisdom is 30 + a 1d10 roll");
+  int wis = 30+reroll(10);
+  print("Your wisdom is $wis");
+  print("Your resolve is 40 + a 1d10 roll");
+  int res = 40+reroll(10);
+  print("Your resolve is $res");
+  print("Your HP is 5 + a 1d6 roll");
+  int hp = 5+reroll(6);
+  print("Your HP is $hp");
+}
+
+humanCreation(){
+  print("Now you're going to roll your basic stats and HP for your hero.");
+  print("Your strength is 30 + a 1d10 roll");
+  int str = 30+reroll(10);
+  print("Your strength is $str");
+  print("Your constitution is 30 + a 1d10 roll");
+  int con = 30+reroll(10);
+  print("Your constitution is $con");
+  print("Your dexterity is 30 + a 1d10 roll");
+  int dex = 30+reroll(10);
+  print("Your dexterity is $dex");
+  print("Your wisdom is 30 + a 1d10 roll");
+  int wis = 30+reroll(10);
+  print("Your wisdom is $wis");
+  print("Your resolve is 30 + a 1d10 roll");
+  int res = 30+reroll(10);
+  print("Your resolve is $res");
+  print("Your HP is 6 + a 1d6 roll");
+  int hp = 7+reroll(6);
+  print("Your HP is $hp");
 }

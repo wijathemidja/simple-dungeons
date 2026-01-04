@@ -1,0 +1,5 @@
+name : simple_dungeons
+environment:
+  sdk : ^3.10.1
+
+

@@ -1,2 +1,6 @@
 // This rules file basically determines what differing functions to use in certain situations. I could include this in functions and main but this makes it 1. easily configurable and 2. readable (and ig modular)
+// RULES
+// (yes rules are technically just global variables but this makes them easier to find)
 String rerollType = "extendedReroll";
+// GLOBAL VARIABLES
+String lastScreen = "welcomeScreen";

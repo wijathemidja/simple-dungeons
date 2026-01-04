@@ -20,6 +20,7 @@ int exReroll(int maxposvalue){
     String? chosenOption = stdin.readLineSync();
     if (chosenOption == "0"){
       chosenRoll=roll1;
+      clearScreen();
       break;
     } else if (chosenOption == "1"){
       if (roll1 >= roll2){
@@ -28,6 +29,8 @@ int exReroll(int maxposvalue){
         chosenRoll = roll2;
       }
       print("Your reroll was $roll2. The value used will be $chosenRoll");
+      sleep(Duration(seconds: rule.rules["Delay Before Clear"]));
+      clearScreen();
       break;
     } else {
       print("You didn't enter a value that was 0 or 1. Please try again");
@@ -83,6 +86,7 @@ welcome(){
       print("You didn't enter a valid input. Please try again.");
     }
   }
+  clearScreen();
   runfunction;
 }
 //Create Character
@@ -112,6 +116,7 @@ createCharacter(){
       print("You didn't enter a valid input. Please try again.");
     }
   }
+  clearScreen();
   runfunction;
 
 
@@ -131,9 +136,24 @@ setup(){
   } else if (rrchosenOption == "3"){
     backScreen();
   }
-  //NEXT RULE HERE PLACEHOLDER
+  int clearDelay = rule.rules["Delay Before Clear"];
+  print("When using extended rerolls, the delay before clear is set to $clearDelay seconds.");
+  print("[0] Set delay to custom amount \n[1] Keep current rule \n[2] Back");
+  String? cdchosenOption = stdin.readLineSync();
+  if (cdchosenOption == "0"){
+    print("What do you want the delay to be (in seconds)? \nIf you want it to be 0 enter 0.");
+    String? cdcustomstr = stdin.readLineSync();
+    String cdcustomr = "$cdcustomstr";
+    int cdcustom = int.parse(cdcustomr);
+    rule.rules["Delay Before Clear"] = cdcustom;
+  } else if (cdchosenOption == "2"){
+    backScreen();
+  } else {
+    print("Kept delay at $clearDelay seconds");
+  }
   //NEXT RULE HERE PLACEHOLDER
   //Exit
+  clearScreen();
   backScreen();
 }
 
@@ -151,90 +171,113 @@ exitapp(){
 // CHARACTER CREATION SPECIES SPECIFIC
 
 dwarfCreation(){
-  print("Now you're going to roll your basic stats and HP for your hero.");
+  print("Now you're going to roll your basic stats and HP for your hero.\n");
   print("Your strength is 40 + a 1d10 roll");
   int str = 40+reroll(10);
   print("Your strength is $str");
-
+  clearScreen();
   print("Your constitution is 30 + a 1d10 roll");
   int con = 30+reroll(10);
   print("Your constitution is $con");
+  clearScreen();
   print("Your dexterity is 25 + a 1d10 roll");
   int dex = 25+reroll(10);
   print("Your dexterity is $dex");
+  clearScreen();
   print("Your wisdom is 25 + a 1d10 roll");
   int wis = 25+reroll(10);
   print("Your wisdom is $wis");
+  clearScreen();
   print("Your resolve is 30 + a 1d10 roll");
   int res = 30+reroll(10);
   print("Your resolve is $res");
+  clearScreen();
   print("Your HP is 8 + a 1d6 roll");
   int hp = 8+reroll(6);
   print("Your HP is $hp");
 }
 
 elfCreation(){
-  print("Now you're going to roll your basic stats and HP for your hero.");
+  print("Now you're going to roll your basic stats and HP for your hero.\n");
   print("Your strength is 25 + a 1d10 roll");
   int str = 25+reroll(10);
   print("Your strength is $str");
+  clearScreen();
   print("Your constitution is 20 + a 1d10 roll");
   int con = 20+reroll(10);
   print("Your constitution is $con");
+  clearScreen();
   print("Your dexterity is 40 + a 1d10 roll");
   int dex = 40+reroll(10);
   print("Your dexterity is $dex");
+  clearScreen();
   print("Your wisdom is 35 + a 1d10 roll");
   int wis = 35+reroll(10);
   print("Your wisdom is $wis");
+  clearScreen();
   print("Your resolve is 30 + a 1d10 roll");
   int res = 30+reroll(10);
   print("Your resolve is $res");
+  clearScreen();
   print("Your HP is 6 + a 1d6 roll");
   int hp = 6+reroll(6);
   print("Your HP is $hp");
 }
 
 halflingCreation(){
-  print("Now you're going to roll your basic stats and HP for your hero.");
+  print("Now you're going to roll your basic stats and HP for your hero.\n");
   print("Your strength is 20 + a 1d10 roll");
   int str = 20+reroll(10);
   print("Your strength is $str");
+  clearScreen();
   print("Your constitution is 20 + a 1d10 roll");
   int con = 20+reroll(10);
   print("Your constitution is $con");
+  clearScreen();
   print("Your dexterity is 40 + a 1d10 roll");
   int dex = 40+reroll(10);
   print("Your dexterity is $dex");
+  clearScreen();
   print("Your wisdom is 30 + a 1d10 roll");
   int wis = 30+reroll(10);
   print("Your wisdom is $wis");
+  clearScreen();
   print("Your resolve is 40 + a 1d10 roll");
   int res = 40+reroll(10);
   print("Your resolve is $res");
+  clearScreen();
   print("Your HP is 5 + a 1d6 roll");
   int hp = 5+reroll(6);
   print("Your HP is $hp");
 }
 
 humanCreation(){
-  print("Now you're going to roll your basic stats and HP for your hero.");
+  print("Now you're going to roll your basic stats and HP for your hero.\n");
   print("Your strength is 30 + a 1d10 roll");
   int str = 30+reroll(10);
   print("Your strength is $str");
+  clearScreen();
   print("Your constitution is 30 + a 1d10 roll");
   int con = 30+reroll(10);
   print("Your constitution is $con");
+  clearScreen();
   print("Your dexterity is 30 + a 1d10 roll");
   int dex = 30+reroll(10);
   print("Your dexterity is $dex");
+  clearScreen();
   print("Your wisdom is 30 + a 1d10 roll");
   int wis = 30+reroll(10);
   print("Your wisdom is $wis");
+  clearScreen();
   print("Your resolve is 30 + a 1d10 roll");
   int res = 30+reroll(10);
   print("Your resolve is $res");
+  clearScreen();
   print("Your HP is 6 + a 1d6 roll");
   int hp = 7+reroll(6);
   print("Your HP is $hp");
+}
+
+clearScreen(){
+  print(Process.runSync("clear", [], runInShell: true).stdout);
 }

@@ -3,7 +3,7 @@ import 'functions.dart';
 // RULES
 // (yes rules are technically just global variables but this makes them easier to find)
 // Rules are held in a map.
-Map rules = {"Rerolls" : "Extended", };
+Map rules = {"Rerolls" : "Extended", "Delay Before Clear" : 5,};
 // SCREEN MAP
 Map<String,Function> screens = {
   "welcome" : welcome(),

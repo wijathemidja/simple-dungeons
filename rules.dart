@@ -10,12 +10,39 @@ Map<String,Function> screens = {
 };
 // GLOBAL VARIABLES
 String lastScreen = "welcome";
+Map<String, int> elfStats ={
+  "str" : 25,
+  "con" : 20,
+  "dex" : 40,
+  "wis" : 35,
+  "res" : 30,
+  "hp" : 6,
+};
 
+Map<String, int> dwarfStats ={
+  "str" : 40,
+  "con" : 30,
+  "dex" : 25,
+  "wis" : 25,
+  "res" : 30,
+  "hp" : 8,
+};
 
+Map<String, int> halflingStats = {
+  "str" : 20,
+  "con" : 20,
+  "dex" : 40,
+  "wis" : 30,
+  "res" : 40,
+  "hp" : 5,
+};
 
-
-
-
-
-
+Map<String, int> humanStats = {
+  "str" : 30,
+  "con" : 30,
+  "dex" : 30,
+  "wis" : 30,
+  "res" : 30,
+  "hp" : 7,
+};
 

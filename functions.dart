@@ -93,22 +93,23 @@ welcome(){
 //Create Character is called whenever it is selected from the welcome menu. It does what is says ig
 createCharacter(){
   String? ccchoice;
+  late String species;
   Function? runfunction;
   while(true){
     print("What would you like your species to be?");
     print("[0] Dwarf \n[1] Elf \n[2] Halfling \n[3] Human \n[4] Back");
     ccchoice = stdin.readLineSync();
     if (ccchoice == "0"){
-      runfunction = dwarfCreation();
+      species = "dwarf";
       break;
     } else if (ccchoice == "1"){
-      runfunction = elfCreation();
+       species = "elf";
       break;
     } else if (ccchoice == "2"){
-      runfunction = halflingCreation();
+       species = "halfling";
       break;
     } else if (ccchoice == "3"){
-      runfunction = humanCreation();
+       species = "human";
     } else if (ccchoice == "4"){
       runfunction = backScreen();
       break;
@@ -118,6 +119,8 @@ createCharacter(){
   }
   clearScreen();
   runfunction;
+  List stats = speciesCreation(species);
+  print(stats);
 
 
 }
@@ -169,114 +172,45 @@ exitapp(){
 }
 
 // CHARACTER CREATION SPECIES SPECIFIC
-
-dwarfCreation(){
-  print("Now you're going to roll your basic stats and HP for your hero.\n");
-  print("Your strength is 40 + a 1d10 roll");
-  int str = 40+reroll(10);
-  print("Your strength is $str");
-  clearScreen();
-  print("Your constitution is 30 + a 1d10 roll");
-  int con = 30+reroll(10);
-  print("Your constitution is $con");
-  clearScreen();
-  print("Your dexterity is 25 + a 1d10 roll");
-  int dex = 25+reroll(10);
-  print("Your dexterity is $dex");
-  clearScreen();
-  print("Your wisdom is 25 + a 1d10 roll");
-  int wis = 25+reroll(10);
-  print("Your wisdom is $wis");
-  clearScreen();
-  print("Your resolve is 30 + a 1d10 roll");
-  int res = 30+reroll(10);
-  print("Your resolve is $res");
-  clearScreen();
-  print("Your HP is 8 + a 1d6 roll");
-  int hp = 8+reroll(6);
-  print("Your HP is $hp");
+speciesCreation(String species){
+  late Map basicStats;
+  if (species == "elf"){
+    basicStats = rule.elfStats;
+  } else if (species == "dwarf"){
+    basicStats = rule.dwarfStats;
+  } else if (species == "halfling"){
+    basicStats = rule.halflingStats;
+  } else if (species == "human"){
+    basicStats = rule.humanStats;
+  }
+  int basestr = basicStats["str"];
+  int basecon = basicStats["con"];
+  int basedex = basicStats["dex"];
+  int basewis  = basicStats["wis"];
+  int baseres = basicStats["res"];
+  int basehp = basicStats["hp"];
+  print("Your strength is $basestr + a 1d10");
+  int str = basestr + reroll(10);
+  print("Your constitution is $basecon + a 1d10");
+  int con = basecon + reroll(10);
+  print("Your dexterity is $basedex + a 1d10");
+  int dex = basedex + reroll(10);
+  print("Your wisdom is $basewis + a 1d10");
+  int wis = basewis + reroll(10);
+  print("Your resolve is $baseres + a 1d10");
+  int res = baseres + reroll(10);
+  print("Your HP is $basehp + a 1d6");
+  int hp = basehp + reroll(6);
+  return ([str, con, dex, wis, res, hp]);
 }
 
-elfCreation(){
-  print("Now you're going to roll your basic stats and HP for your hero.\n");
-  print("Your strength is 25 + a 1d10 roll");
-  int str = 25+reroll(10);
-  print("Your strength is $str");
-  clearScreen();
-  print("Your constitution is 20 + a 1d10 roll");
-  int con = 20+reroll(10);
-  print("Your constitution is $con");
-  clearScreen();
-  print("Your dexterity is 40 + a 1d10 roll");
-  int dex = 40+reroll(10);
-  print("Your dexterity is $dex");
-  clearScreen();
-  print("Your wisdom is 35 + a 1d10 roll");
-  int wis = 35+reroll(10);
-  print("Your wisdom is $wis");
-  clearScreen();
-  print("Your resolve is 30 + a 1d10 roll");
-  int res = 30+reroll(10);
-  print("Your resolve is $res");
-  clearScreen();
-  print("Your HP is 6 + a 1d6 roll");
-  int hp = 6+reroll(6);
-  print("Your HP is $hp");
-}
 
-halflingCreation(){
-  print("Now you're going to roll your basic stats and HP for your hero.\n");
-  print("Your strength is 20 + a 1d10 roll");
-  int str = 20+reroll(10);
-  print("Your strength is $str");
-  clearScreen();
-  print("Your constitution is 20 + a 1d10 roll");
-  int con = 20+reroll(10);
-  print("Your constitution is $con");
-  clearScreen();
-  print("Your dexterity is 40 + a 1d10 roll");
-  int dex = 40+reroll(10);
-  print("Your dexterity is $dex");
-  clearScreen();
-  print("Your wisdom is 30 + a 1d10 roll");
-  int wis = 30+reroll(10);
-  print("Your wisdom is $wis");
-  clearScreen();
-  print("Your resolve is 40 + a 1d10 roll");
-  int res = 40+reroll(10);
-  print("Your resolve is $res");
-  clearScreen();
-  print("Your HP is 5 + a 1d6 roll");
-  int hp = 5+reroll(6);
-  print("Your HP is $hp");
-}
 
-humanCreation(){
-  print("Now you're going to roll your basic stats and HP for your hero.\n");
-  print("Your strength is 30 + a 1d10 roll");
-  int str = 30+reroll(10);
-  print("Your strength is $str");
-  clearScreen();
-  print("Your constitution is 30 + a 1d10 roll");
-  int con = 30+reroll(10);
-  print("Your constitution is $con");
-  clearScreen();
-  print("Your dexterity is 30 + a 1d10 roll");
-  int dex = 30+reroll(10);
-  print("Your dexterity is $dex");
-  clearScreen();
-  print("Your wisdom is 30 + a 1d10 roll");
-  int wis = 30+reroll(10);
-  print("Your wisdom is $wis");
-  clearScreen();
-  print("Your resolve is 30 + a 1d10 roll");
-  int res = 30+reroll(10);
-  print("Your resolve is $res");
-  clearScreen();
-  print("Your HP is 6 + a 1d6 roll");
-  int hp = 7+reroll(6);
-  print("Your HP is $hp");
-}
+
+
+
+
+
 
 clearScreen(){
   print(Process.runSync("clear", [], runInShell: true).stdout);

@@ -137,7 +137,6 @@ setup() {
   //Exit
   clearScreen();
   welcome();
-
 }
 
 //Exit App
@@ -182,6 +181,7 @@ createCharacter() {
   clearScreen();
   runfunction;
   Map setStats = speciesCreation(species);
+  boost15(setStats);
 }
 
 //CC SPECIES SPECIFIC
@@ -250,6 +250,150 @@ Map<String, int> speciesCreation(String species) {
   return (stats);
 }
 
+boost15(currentStats) {
+  int points = 15;
+  final int strp = currentStats["str"];
+  final int conp = currentStats["con"];
+  final int dexp = currentStats["dex"];
+  final int wisp = currentStats["wis"];
+  final int resp = currentStats["res"];
+  int str = currentStats["str"];
+  int con = currentStats["con"];
+  int dex = currentStats["dex"];
+  int wis = currentStats["wis"];
+  int res = currentStats["res"];
+  Map<String, int> pointSpent = {
+    "str": 0,
+    "con": 0,
+    "dex": 0,
+    "wis": 0,
+    "res": 0,
+  };
+  while (points > 0) {
+    print("You have $points avaliable to spend to upgrade your stats (excluding HP).\nYou can put a maximum of 10 extra into one stat.");
+    print("Add points to...\n[0] Strength (Currently strength is $str)\n[1] Constitution (Currently constitution is $con)\n[2] Dexterity (Currently dexterity is $dex)\n[3] Wisdom (Currently wisdom is $wis)\n[4] Resolve (Currently resolve is $res)\n[5] Reset Points");
+    String? bc;
+    bc = stdin.readLineSync();
+    if (bc == "0") {
+      if (pointSpent["str"]! < 10) {
+        int avalOnStat = 10 - (pointSpent["str"]!);
+        if (points < avalOnStat) {
+          avalOnStat = points;
+        }
+        print("You can spend a maximum of $avalOnStat points on this stat. How many would you like to spend?");
+        String? usrInPoints = stdin.readLineSync();
+        int? spendPoints = int.parse(usrInPoints!);
+        if (spendPoints > avalOnStat){
+          print("You don't have that many avaliable points");
+        } else {
+          points = points - spendPoints;
+          pointSpent["str"] = pointSpent["str"]! + spendPoints;
+          str = strp + pointSpent["str"]!;
+        }
+      } else {
+        print("You've already spent the maximum (10) on this stat.");
+      }
+    } else if (bc == "1") {
+      if (pointSpent["con"]! < 10) {
+        int avalOnStat = 10 - (pointSpent["con"]!);
+        if (points < avalOnStat) {
+          avalOnStat = points;
+        }
+        print(
+          "You can spend a maximum of $avalOnStat points on this stat. How many would you like to spend?",
+        );
+        String? usrInPoints = stdin.readLineSync();
+        int? spendPoints = int.parse(usrInPoints!);
+        if (spendPoints > avalOnStat){
+          print("You don't have that many avaliable points");
+        } else {
+          points = points - spendPoints;
+          pointSpent["con"] = pointSpent["con"]! + spendPoints;
+          con = conp + pointSpent["con"]!;
+        }
+      } else {
+        print("You've already spent the maximum (10) on this stat.");
+      }
+    } else if (bc == "2") {
+      if (pointSpent["dex"]! < 10) {
+        int avalOnStat = 10 - (pointSpent["dex"]!);
+        if (points < avalOnStat) {
+          avalOnStat = points;
+        }
+        print(
+          "You can spend a maximum of $avalOnStat points on this stat. How many would you like to spend?",
+        );
+        String? usrInPoints = stdin.readLineSync();
+        int? spendPoints = int.parse(usrInPoints!);
+        if (spendPoints > avalOnStat){
+          print("You don't have that many avaliable points");
+        } else {
+          points = points - spendPoints;
+          pointSpent["dex"] = pointSpent["dex"]! + spendPoints;
+          dex = dexp + pointSpent["dex"]!;
+        }
+      } else {
+        print("You've already spent the maximum (10) on this stat.");
+      }
+    } else if (bc == "3") {
+      if (pointSpent["wis"]! < 10) {
+        int avalOnStat = 10 - (pointSpent["wis"]!);
+        if (points < avalOnStat) {
+          avalOnStat = points;
+        }
+        print(
+          "You can spend a maximum of $avalOnStat points on this stat. How many would you like to spend?",
+        );
+        String? usrInPoints = stdin.readLineSync();
+        int? spendPoints = int.parse(usrInPoints!);
+        if (spendPoints > avalOnStat){
+          print("You don't have that many avaliable points");
+        } else {
+          points = points - spendPoints;
+          pointSpent["wis"] = pointSpent["wis"]! + spendPoints;
+          wis = wisp + pointSpent["wis"]!;
+        }
+      } else {
+        print("You've already spent the maximum (10) on this stat.");
+      }
+    } else if (bc == "4") {
+      if (pointSpent["res"]! < 10) {
+        int avalOnStat = 10 - (pointSpent["res"]!);
+        if (points < avalOnStat) {
+          avalOnStat = points;
+        }
+        print(
+          "You can spend a maximum of $avalOnStat points on this stat. How many would you like to spend?",
+        );
+        String? usrInPoints = stdin.readLineSync();
+        int? spendPoints = int.parse(usrInPoints!);
+        if (spendPoints > avalOnStat){
+          print("You don't have that many avaliable points");
+        } else {
+          points = points - spendPoints;
+          pointSpent["res"] = pointSpent["res"]! + spendPoints;
+          res = resp + pointSpent["res"]!;
+        }
+      } else {
+        print("You've already spent the maximum (10) on this stat.");
+      }
+    } else if (bc == "5"){
+      points = 15;
+      pointSpent["str"] = 0;
+      pointSpent["con"] = 0;
+      pointSpent["dex"] = 0;
+      pointSpent["wis"] = 0;
+      pointSpent["res"] = 0;
+      str = strp;
+      con = conp;
+      dex = dexp;
+      wis = wisp;
+      res = resp;
+
+    }
+  }
+}
+
 //TOOLS
 //Clear screen doesn't currently work on windows still (idk) but on all other systems will send the clear command to shell.
 clearScreen() {
@@ -260,7 +404,7 @@ clearScreen() {
   }
 }
 
-cuSl(){
-  sleep(Duration (milliseconds: rule.rules["Delay Before Clear"]));
+cuSl() {
+  sleep(Duration(milliseconds: rule.rules["Delay Before Clear"]));
   clearScreen();
 }

@@ -262,21 +262,14 @@ boost15(currentStats) {
   int dex = currentStats["dex"];
   int wis = currentStats["wis"];
   int res = currentStats["res"];
-  Map<String, int> pointSpent = {
-    "str": 0,
-    "con": 0,
-    "dex": 0,
-    "wis": 0,
-    "res": 0,
-  };
   while (points > 0) {
     print("You have $points avaliable to spend to upgrade your stats (excluding HP).\nYou can put a maximum of 10 extra into one stat.");
     print("Add points to...\n[0] Strength (Currently strength is $str)\n[1] Constitution (Currently constitution is $con)\n[2] Dexterity (Currently dexterity is $dex)\n[3] Wisdom (Currently wisdom is $wis)\n[4] Resolve (Currently resolve is $res)\n[5] Reset Points");
     String? bc;
     bc = stdin.readLineSync();
     if (bc == "0") {
-      if (pointSpent["str"]! < 10) {
-        int avalOnStat = 10 - (pointSpent["str"]!);
+      if ((str - strp) < 10) {
+        int avalOnStat = 10 - (str-strp);
         if (points < avalOnStat) {
           avalOnStat = points;
         }
@@ -287,15 +280,14 @@ boost15(currentStats) {
           print("You don't have that many avaliable points");
         } else {
           points = points - spendPoints;
-          pointSpent["str"] = pointSpent["str"]! + spendPoints;
-          str = strp + pointSpent["str"]!;
+          str = str + spendPoints;
         }
       } else {
         print("You've already spent the maximum (10) on this stat.");
       }
     } else if (bc == "1") {
-      if (pointSpent["con"]! < 10) {
-        int avalOnStat = 10 - (pointSpent["con"]!);
+      if ((con-conp) < 10) {
+        int avalOnStat = 10 - (con-conp);
         if (points < avalOnStat) {
           avalOnStat = points;
         }
@@ -308,15 +300,14 @@ boost15(currentStats) {
           print("You don't have that many avaliable points");
         } else {
           points = points - spendPoints;
-          pointSpent["con"] = pointSpent["con"]! + spendPoints;
-          con = conp + pointSpent["con"]!;
+          con = con + spendPoints;
         }
       } else {
         print("You've already spent the maximum (10) on this stat.");
       }
     } else if (bc == "2") {
-      if (pointSpent["dex"]! < 10) {
-        int avalOnStat = 10 - (pointSpent["dex"]!);
+      if ((dex - dexp) < 10) {
+        int avalOnStat = 10 - (dex-dexp);
         if (points < avalOnStat) {
           avalOnStat = points;
         }
@@ -329,15 +320,14 @@ boost15(currentStats) {
           print("You don't have that many avaliable points");
         } else {
           points = points - spendPoints;
-          pointSpent["dex"] = pointSpent["dex"]! + spendPoints;
-          dex = dexp + pointSpent["dex"]!;
+          dex = dex + spendPoints;
         }
       } else {
         print("You've already spent the maximum (10) on this stat.");
       }
     } else if (bc == "3") {
-      if (pointSpent["wis"]! < 10) {
-        int avalOnStat = 10 - (pointSpent["wis"]!);
+      if ((wis-wisp) < 10) {
+        int avalOnStat = 10 - (wis-wisp);
         if (points < avalOnStat) {
           avalOnStat = points;
         }
@@ -350,15 +340,14 @@ boost15(currentStats) {
           print("You don't have that many avaliable points");
         } else {
           points = points - spendPoints;
-          pointSpent["wis"] = pointSpent["wis"]! + spendPoints;
-          wis = wisp + pointSpent["wis"]!;
+          wis = wis + spendPoints;
         }
       } else {
         print("You've already spent the maximum (10) on this stat.");
       }
     } else if (bc == "4") {
-      if (pointSpent["res"]! < 10) {
-        int avalOnStat = 10 - (pointSpent["res"]!);
+      if ((res-resp) < 10) {
+        int avalOnStat = 10 - (res-resp);
         if (points < avalOnStat) {
           avalOnStat = points;
         }
@@ -371,19 +360,13 @@ boost15(currentStats) {
           print("You don't have that many avaliable points");
         } else {
           points = points - spendPoints;
-          pointSpent["res"] = pointSpent["res"]! + spendPoints;
-          res = resp + pointSpent["res"]!;
+          res = res + spendPoints;
         }
       } else {
         print("You've already spent the maximum (10) on this stat.");
       }
     } else if (bc == "5"){
       points = 15;
-      pointSpent["str"] = 0;
-      pointSpent["con"] = 0;
-      pointSpent["dex"] = 0;
-      pointSpent["wis"] = 0;
-      pointSpent["res"] = 0;
       str = strp;
       con = conp;
       dex = dexp;

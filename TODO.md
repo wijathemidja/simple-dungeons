@@ -6,6 +6,9 @@
 Release v0.1 'Character Creation'
 2. Fix Back Button
 Hotfix v0.1.1.0
+3. Make Enemies (make a enemies.dart file probs)
+Release v0.2 'Enemies'
+4. 
 
 
 

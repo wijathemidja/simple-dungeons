@@ -3,11 +3,11 @@
 ## NEXT PLANNED ADDITIONS
 
 1. Making skills function
-Release v0.1 'Character Creation'
+B Major Release 'Character Creation'
 2. Fix Back Button
-Hotfix v0.1.1.0
+D Hotfix Major
 3. Make Enemies (make a enemies.dart file probs)
-Release v0.2 'Enemies'
+B Release Major 'Enemies'
 4. 
 
 

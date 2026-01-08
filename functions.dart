@@ -112,13 +112,13 @@ setup() {
   } else if (rrchosenOption == "1") {
     rule.rules["Rerolls"] = "Automatic";
   } else if (rrchosenOption == "3") {
-    //placeholder for working back button;
+    back();
   }
   int clearDelay = rule.rules["Delay Before Clear"];
   print(
     "When using extended rerolls (and automatic rerolls in character creation), the delay before clear is set to $clearDelay milliseconds.",
   );
-  print("[0] Set delay to custom amount \n[1] Keep current rule \n[2] Back");
+  print("[0] Set delay to custom amount \n[1] Keep current rule");
   String? cdchosenOption = stdin.readLineSync();
   if (cdchosenOption == "0") {
     print(
@@ -128,15 +128,13 @@ setup() {
     String cdcustomr = "$cdcustomstr";
     int cdcustom = int.parse(cdcustomr);
     rule.rules["Delay Before Clear"] = cdcustom;
-  } else if (cdchosenOption == "2") {
-    //Placeholder for working back system
   } else {
     print("Kept delay at $clearDelay milliseconds");
   }
   //NEXT RULE HERE PLACEHOLDER
   //Exit
   clearScreen();
-  welcome();
+  back();
 }
 
 //Exit App
@@ -151,7 +149,7 @@ exitapp() {
 createCharacter() {
   String? ccchoice;
   late String species;
-  Function? runfunction = (null);
+  Function? runfunc = (null);
   while (true) {
     print("What would you like your species to be?");
     print("[0] Dwarf \n[1] Elf \n[2] Halfling \n[3] Human \n[4] Back");
@@ -168,18 +166,13 @@ createCharacter() {
     } else if (ccchoice == "3") {
       species = "human";
     } else if (ccchoice == "4") {
-      /*
-      CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS
-      CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS
-      CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS
-      CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS CHANGE THIS */
-      species = "human";
+      runfunc = back();
     } else {
       print("You didn't enter a valid input. Please try again.");
     }
   }
   clearScreen();
-  runfunction;
+  runfunc;
   Map setStats = speciesCreation(species);
   boost15(setStats);
 }
@@ -386,8 +379,14 @@ clearScreen() {
     print(Process.runSync("clear", [], runInShell: true).stdout);
   }
 }
-
+// Clear screen that delays itself by the rule set in rules.dart
 cuSl() {
   sleep(Duration(milliseconds: rule.rules["Delay Before Clear"]));
   clearScreen();
 }
+//Back Screen 
+// Go to the last screen saved (default is the welcome screen)
+back(){
+  rule.lastScreen;
+}
+

@@ -174,7 +174,27 @@ createCharacter() {
   clearScreen();
   runfunc;
   Map setStats = speciesCreation(species);
-  boost15(setStats);
+  Map bStats = boost15(setStats);
+  String? profin;
+  late String profstr; 
+  Map<String, int> finalStats = {
+    "str":bStats["str"],
+    "con":bStats["con"],
+    "dex":bStats["dex"],
+    "wis":bStats["wis"],
+    "res":bStats["res"],
+    "hp": setStats["hp"],
+  };
+  while(true){
+    print("What profession would you like to be?\n[0] Alchemist\n[2] Barbarian\n[3] Ranger");
+    profin = stdin.readLineSync();
+    if (profin=="0"){
+      profstr = "alch";
+      break;
+    }
+  }
+  
+  ccskills(finalStats, profstr);  
 }
 
 //CC SPECIES SPECIFIC
@@ -243,7 +263,7 @@ Map<String, int> speciesCreation(String species) {
   return (stats);
 }
 
-boost15(currentStats) {
+Map<String, int> boost15(currentStats) {
   int points = 15;
   final int strp = currentStats["str"];
   final int conp = currentStats["con"];
@@ -368,6 +388,19 @@ boost15(currentStats) {
 
     }
   }
+  Map<String, int> finalStats = {
+    "str":str,
+    "con":con,
+    "dex":dex,
+    "wis":wis,
+    "res":res,
+  };
+  return(finalStats);
+}
+
+//CC Skills
+ccskills(stats, prof){
+  
 }
 
 //TOOLS

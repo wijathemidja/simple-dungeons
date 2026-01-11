@@ -102,3 +102,4 @@ class enemy {
 class mercenary extends enemy {
   //Placeholder
 }
+

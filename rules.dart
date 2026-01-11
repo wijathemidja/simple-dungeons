@@ -43,3 +43,102 @@ Map<String, int> humanStats = {
   "res": 30,
   "hp": 7,
 };
+
+Map<String, int> alchemistSkills = {
+  "cs" : 0,
+  "rs" : 0,
+  "dodge" : 0,
+  "pickLocks" : 0,
+  "barter": 0,
+  "heal" : 0,
+  "alch" : 0,
+  "perc":0,
+  "fora": 0,
+};
+
+
+Map<String, int> barbarianSkills = {
+  "cs" : 0,
+  "rs" : 0,
+  "dodge" : 0,
+  "pickLocks" : 0,
+  "barter": 0,
+  "heal" : 0,
+  "alch" : 0,
+  "perc":0,
+  "fora": 0,
+};
+
+Map<String, int> rangerSkills = {
+  "cs" : 0,
+  "rs" : 0,
+  "dodge" : 0,
+  "pickLocks" : 0,
+  "barter": 0,
+  "heal" : 0,
+  "alch" : 0,
+  "perc":0,
+  "fora": 0,
+};
+
+Map<String, int> rogueSkills = {
+  "cs" : 0,
+  "rs" : 0,
+  "dodge" : 0,
+  "pickLocks" : 0,
+  "barter": 0,
+  "heal" : 0,
+  "alch" : 0,
+  "perc":0,
+  "fora": 0,
+};
+
+Map<String, int> thiefSkills = {
+  "cs" : 0,
+  "rs" : 0,
+  "dodge" : 0,
+  "pickLocks" : 0,
+  "barter": 0,
+  "heal" : 0,
+  "alch" : 0,
+  "perc":0,
+  "fora": 0,
+};
+
+Map<String, int> warriorSkills = {
+  "cs" : 0,
+  "rs" : 0,
+  "dodge" : 0,
+  "pickLocks" : 0,
+  "barter": 0,
+  "heal" : 0,
+  "alch" : 0,
+  "perc":0,
+  "fora": 0,
+};
+
+Map<String, int> warriorPriestSkills = {
+  "cs" : 0,
+  "rs" : 0,
+  "dodge" : 0,
+  "pickLocks" : 0,
+  "barter": 0,
+  "heal" : 0,
+  "alch" : 0,
+  "perc":0,
+  "fora": 0,
+  "battPray": 0,
+};
+
+Map<String, int> wizardSkills = {
+  "cs" : 0,
+  "rs" : 0,
+  "dodge" : 0,
+  "pickLocks" : 0,
+  "barter": 0,
+  "heal" : 0,
+  "alch" : 0,
+  "perc":0,
+  "fora": 0,
+  "arcArt" : 0,
+};

@@ -176,25 +176,51 @@ createCharacter() {
   Map setStats = speciesCreation(species);
   Map bStats = boost15(setStats);
   String? profin;
-  late String profstr; 
+  late String profstr;
   Map<String, int> finalStats = {
-    "str":bStats["str"],
-    "con":bStats["con"],
-    "dex":bStats["dex"],
-    "wis":bStats["wis"],
-    "res":bStats["res"],
+    "str": bStats["str"],
+    "con": bStats["con"],
+    "dex": bStats["dex"],
+    "wis": bStats["wis"],
+    "res": bStats["res"],
     "hp": setStats["hp"],
   };
-  while(true){
-    print("What profession would you like to be?\n[0] Alchemist\n[2] Barbarian\n[3] Ranger");
+  while (true) {
+    print(
+      "What profession would you like to be?\n[0] Alchemist\n[1] Barbarian\n[2] Ranger\n[3] Rogue\n[4] Thief\n[5] Warrior\n[6] Warrior Priest \n[7] Wizard",
+    );
     profin = stdin.readLineSync();
-    if (profin=="0"){
+    if (profin == "0") {
       profstr = "alch";
       break;
+    } else if (profin == "1") {
+      profstr = "barb";
+      break;
+    } else if (profin == "2") {
+      profstr = "rang";
+      break;
+    } else if (profin == "3") {
+      profstr = "rogue";
+      break;
+    } else if (profin == "4") {
+      profstr = "thief";
+      break;
+    } else if (profin == "5") {
+      profstr = "war";
+      break;
+    } else if (profin == "6") {
+      profstr = "warpr";
+      break;
+    } else if (profin == "7") {
+      profstr = "wiz";
+      break;
+    } else {
+      print("You didn't enter a valid input. Please try again.");
     }
+    break;
   }
-  
-  ccskills(finalStats, profstr);  
+
+  ccskills(finalStats, profstr);
 }
 
 //CC SPECIES SPECIFIC
@@ -276,20 +302,26 @@ Map<String, int> boost15(currentStats) {
   int wis = currentStats["wis"];
   int res = currentStats["res"];
   while (points > 0) {
-    print("You have $points avaliable to spend to upgrade your stats (excluding HP).\nYou can put a maximum of 10 extra into one stat.");
-    print("Add points to...\n[0] Strength (Currently strength is $str)\n[1] Constitution (Currently constitution is $con)\n[2] Dexterity (Currently dexterity is $dex)\n[3] Wisdom (Currently wisdom is $wis)\n[4] Resolve (Currently resolve is $res)\n[5] Reset Points");
+    print(
+      "You have $points avaliable to spend to upgrade your stats (excluding HP).\nYou can put a maximum of 10 extra into one stat.",
+    );
+    print(
+      "Add points to...\n[0] Strength (Currently strength is $str)\n[1] Constitution (Currently constitution is $con)\n[2] Dexterity (Currently dexterity is $dex)\n[3] Wisdom (Currently wisdom is $wis)\n[4] Resolve (Currently resolve is $res)\n[5] Reset Points",
+    );
     String? bc;
     bc = stdin.readLineSync();
     if (bc == "0") {
       if ((str - strp) < 10) {
-        int avalOnStat = 10 - (str-strp);
+        int avalOnStat = 10 - (str - strp);
         if (points < avalOnStat) {
           avalOnStat = points;
         }
-        print("You can spend a maximum of $avalOnStat points on this stat. How many would you like to spend?");
+        print(
+          "You can spend a maximum of $avalOnStat points on this stat. How many would you like to spend?",
+        );
         String? usrInPoints = stdin.readLineSync();
         int? spendPoints = int.parse(usrInPoints!);
-        if (spendPoints > avalOnStat){
+        if (spendPoints > avalOnStat) {
           print("You don't have that many avaliable points");
         } else {
           points = points - spendPoints;
@@ -299,8 +331,8 @@ Map<String, int> boost15(currentStats) {
         print("You've already spent the maximum (10) on this stat.");
       }
     } else if (bc == "1") {
-      if ((con-conp) < 10) {
-        int avalOnStat = 10 - (con-conp);
+      if ((con - conp) < 10) {
+        int avalOnStat = 10 - (con - conp);
         if (points < avalOnStat) {
           avalOnStat = points;
         }
@@ -309,7 +341,7 @@ Map<String, int> boost15(currentStats) {
         );
         String? usrInPoints = stdin.readLineSync();
         int? spendPoints = int.parse(usrInPoints!);
-        if (spendPoints > avalOnStat){
+        if (spendPoints > avalOnStat) {
           print("You don't have that many avaliable points");
         } else {
           points = points - spendPoints;
@@ -320,7 +352,7 @@ Map<String, int> boost15(currentStats) {
       }
     } else if (bc == "2") {
       if ((dex - dexp) < 10) {
-        int avalOnStat = 10 - (dex-dexp);
+        int avalOnStat = 10 - (dex - dexp);
         if (points < avalOnStat) {
           avalOnStat = points;
         }
@@ -329,7 +361,7 @@ Map<String, int> boost15(currentStats) {
         );
         String? usrInPoints = stdin.readLineSync();
         int? spendPoints = int.parse(usrInPoints!);
-        if (spendPoints > avalOnStat){
+        if (spendPoints > avalOnStat) {
           print("You don't have that many avaliable points");
         } else {
           points = points - spendPoints;
@@ -339,8 +371,8 @@ Map<String, int> boost15(currentStats) {
         print("You've already spent the maximum (10) on this stat.");
       }
     } else if (bc == "3") {
-      if ((wis-wisp) < 10) {
-        int avalOnStat = 10 - (wis-wisp);
+      if ((wis - wisp) < 10) {
+        int avalOnStat = 10 - (wis - wisp);
         if (points < avalOnStat) {
           avalOnStat = points;
         }
@@ -349,7 +381,7 @@ Map<String, int> boost15(currentStats) {
         );
         String? usrInPoints = stdin.readLineSync();
         int? spendPoints = int.parse(usrInPoints!);
-        if (spendPoints > avalOnStat){
+        if (spendPoints > avalOnStat) {
           print("You don't have that many avaliable points");
         } else {
           points = points - spendPoints;
@@ -359,8 +391,8 @@ Map<String, int> boost15(currentStats) {
         print("You've already spent the maximum (10) on this stat.");
       }
     } else if (bc == "4") {
-      if ((res-resp) < 10) {
-        int avalOnStat = 10 - (res-resp);
+      if ((res - resp) < 10) {
+        int avalOnStat = 10 - (res - resp);
         if (points < avalOnStat) {
           avalOnStat = points;
         }
@@ -369,7 +401,7 @@ Map<String, int> boost15(currentStats) {
         );
         String? usrInPoints = stdin.readLineSync();
         int? spendPoints = int.parse(usrInPoints!);
-        if (spendPoints > avalOnStat){
+        if (spendPoints > avalOnStat) {
           print("You don't have that many avaliable points");
         } else {
           points = points - spendPoints;
@@ -378,30 +410,27 @@ Map<String, int> boost15(currentStats) {
       } else {
         print("You've already spent the maximum (10) on this stat.");
       }
-    } else if (bc == "5"){
+    } else if (bc == "5") {
       points = 15;
       str = strp;
       con = conp;
       dex = dexp;
       wis = wisp;
       res = resp;
-
     }
   }
   Map<String, int> finalStats = {
-    "str":str,
-    "con":con,
-    "dex":dex,
-    "wis":wis,
-    "res":res,
+    "str": str,
+    "con": con,
+    "dex": dex,
+    "wis": wis,
+    "res": res,
   };
-  return(finalStats);
+  return (finalStats);
 }
 
 //CC Skills
-ccskills(stats, prof){
-  
-}
+ccskills(stats, prof) {}
 
 //TOOLS
 //Clear screen doesn't currently work on windows still (idk) but on all other systems will send the clear command to shell.
@@ -412,14 +441,15 @@ clearScreen() {
     print(Process.runSync("clear", [], runInShell: true).stdout);
   }
 }
+
 // Clear screen that delays itself by the rule set in rules.dart
 cuSl() {
   sleep(Duration(milliseconds: rule.rules["Delay Before Clear"]));
   clearScreen();
 }
-//Back Screen 
+
+//Back Screen
 // Go to the last screen saved (default is the welcome screen)
-back(){
+back() {
   rule.lastScreen;
 }
-

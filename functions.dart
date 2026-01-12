@@ -191,13 +191,13 @@ createCharacter() {
     );
     profin = stdin.readLineSync();
     if (profin == "0") {
-      profstr = "alch";
+      profstr = "alchemist";
       break;
     } else if (profin == "1") {
-      profstr = "barb";
+      profstr = "barbarian";
       break;
     } else if (profin == "2") {
-      profstr = "rang";
+      profstr = "ranger";
       break;
     } else if (profin == "3") {
       profstr = "rogue";
@@ -206,13 +206,13 @@ createCharacter() {
       profstr = "thief";
       break;
     } else if (profin == "5") {
-      profstr = "war";
+      profstr = "warrior";
       break;
     } else if (profin == "6") {
-      profstr = "warpr";
+      profstr = "warriorPriest";
       break;
     } else if (profin == "7") {
-      profstr = "wiz";
+      profstr = "wizard";
       break;
     } else {
       print("You didn't enter a valid input. Please try again.");
@@ -430,7 +430,28 @@ Map<String, int> boost15(currentStats) {
 }
 
 //CC Skills
-ccskills(stats, prof) {}
+ccskills(stats, prof) {
+  late Map profmap;
+  if (prof == "alchemist") {
+    profmap = rule.alchemistSkills;
+  } else if (prof == "barbarian") {
+    profmap = rule.barbarianSkills;
+  } else if (prof == "ranger") {
+    profmap = rule.rangerSkills;
+  } else if (prof == "rogue") {
+    profmap = rule.rogueSkills;
+  } else if (prof == "thief") {
+    profmap = rule.thiefSkills;
+  } else if (prof == "warrior") {
+    profmap = rule.warriorSkills;
+  } else if (prof == "warriorPriest") {
+    profmap = rule.warriorPriestSkills;
+  } else if (prof == "wizard") {
+    profmap = rule.wizardSkills;
+  }
+  print("You can add 10 skill points to one of your negative modifiers");
+
+}
 
 //TOOLS
 //Clear screen doesn't currently work on windows still (idk) but on all other systems will send the clear command to shell.
